@@ -6,66 +6,74 @@
 /**
 * This object is used for each node
 * It has three properties: 
-* ->paragraph_loc 	=	the paragraph location of the file 
 * ->beginning		=	the location of the start of the phrase (inclusive)
 * ->end 		= 	the end of the phrase (not inclusive)
 * ->comment		=	the text that the object holds (user input)
+* ->key		=	This is the text that the person highlighted
+* ->outKey		=	the type in the html file... also used as a key
 */
-function node(pL, beg, end, comm) {
-	this.paragraph_loc 	= pL;		
+function node(beg, end, comm, key, outKey) {
 	this.beginning 		= beg;
 	this.end 		= end;
 	this.comment 		= comm;
+	this.key		= key;
+	this.outKey		= outKey;
 }
 
 /**
  * Site is the class that encompasses all of the nodes
  * URL - the url of the website
  * length - the length of the nodes array
- * array - array that holds node objects 
+ * array - array that holds paragraph objects 
  */
 function Site(url){
 	this.url 			= url; 
 	this.length		=  0;
-	this.array 		= new Array();
+	this.node 		= new Array();
 }
+
 /**
  * Insert a new node
  */
-Site.prototype.insert  = function(pL, beg, end, comm) {
-
-	this.array.push(new node(pL, beg, end, comm));
+Site.prototype.insert  = function(beg, end, comm, key, outKey) {
+	this.node.push(new node(beg, end, comm, key, outKey));
 	this.length += 1;
 };
 
-/**
- * FInd a node
-* ->pL 		=	the paragraph location of the file 
-* ->beg		=	the location of the start of the phrase (inclusive)
-* ->end 		= 	the end of the phrase (not inclusive)
- */
- Site.prototype.fInd = function(pL, beg, end) {
-
- };
+ /**
+  * Store the array in the chrome storage space
+  */
+Site.prototype.storeToChrome = function() {
+	//Create the JSON representation of the array
+	localStorage["defn" + this.url] = JSON.stringify(this.node);
+};
 
  /**
-  * Upload the info into the chrome storage
+  * Get the array in the chrome storage space
+  */
+Site.prototype.getFromChrome= function() {
+	//Clear the array
+	this.node = [];
+	length = 0;
+
+	//Retrieve the array from storage
+	this.node = JSON.parse(localStorage["defn"+this.url]);
+	this.length = this.node.length;
+};
+
+ /**
+  * testing
   */
 
 function aplay() {
-	var test1 = "test1";
-	var test2 = "test2";
-	var test3 = "test3";
-	var test4 = "test4"; 
+	var test1 = "beg";
+	var test2 = "end";
+	var test3 = "comm";
+	var test4 = "key"; 
+	var test5 = "outKey"; 
 	var site1 = new Site("google.com");
-	site1.insert(test1, test2, test3, test4);
-	alert(site1.array[0].paragraph_loc);
-
-	var test1 = prompt("1", "blah2");
-	var test2 = prompt("2", "blah");
-	var test3 = prompt("3", "blah");
-	var test4 = prompt("4", "blah");
-	insert(test1, test2, test3, test4);
-	//alert(array[0].paragraph_loc);
-	alert(length);
+	site1.insert(test1, test2, test3, test4, test5);
+	alert(site1.node[0].beginning);
+	site1.storeToChrome();
+	alert("ehehehehehe");
 }
