@@ -6,3 +6,8 @@
 	color: #666600;
 	text-decoration: underline;
 }
+.note_container{
+	color: #660066;
+	font-style: italic;
+	text-decoration: overline;
+}

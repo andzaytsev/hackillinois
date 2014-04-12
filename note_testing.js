@@ -4,10 +4,10 @@ var insert_text=function(paragraph) {
 	for (var i = insertions.length - 1; i >= 0; i--) {
 		var html_m = $("p:nth-child("+paragraph.paragraph_num+")").prop('outerHTML');
 		var note = '<a class="note_show" id="note'+
-		i+'_show" style="display: inline;">show note</a><span class="note_container" id="note'+
-		i+'_hide" style="display: none;">'+
+		i+'a'+paragraph.paragraph_num+'_show" style="display: inline;">show note</a><span class="note_container" id="note'+
+		i+'a'+paragraph.paragraph_num+'_hide" style="display: none;">'+
 		insertions[i].content+'<a class="note_hide" id="note'+
-		i+'">(hide note)</a></span>';
+		i+'a'+paragraph.paragraph_num+'">(hide note)</a></span>';
 		html_m = html_m.substr(0,insertions[i].pos_end)+note+html_m.substr(insertions[i].pos_end);
 		$(html_m).insertAfter("p:nth-child("+paragraph.paragraph_num+")");
 		$("p:nth-child("+paragraph.paragraph_num+")").remove();
