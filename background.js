@@ -36,11 +36,10 @@ var addNoteItem = {
 	"id": "addNoteItem",
 	"contexts": ["all"],
 	"onclick": function() {
-		console.log("addNoteItem clicked");
+		noteCreator.displayDialog();
 	}
 };
 
-chrome.contextMenus.create(addNoteItem, function(obj)
-{
+chrome.contextMenus.create(addNoteItem, function(obj) {
 	console.log("addNoteItem has been created");
 });
