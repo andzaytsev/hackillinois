@@ -47,7 +47,7 @@ var highlightItem = {
 	"contexts": ["all"],
 	"onclick": function(info, tab) {
 		console.log(tab.id);
-		chrome.tabs.sendMessage(tab.id, {}, function(response){
+		chrome.tabs.sendMessage(tab.id, {type: "highlight"}, function(response){
 			console.log(response.selectedText);
 		});
 	}

@@ -63,5 +63,10 @@ var getSelectedText = function()
 }*/
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-    sendResponse({selectedText: window.getSelection().toString()});
+	if(request.type == "highlight") {
+		//artyom part
+    	sendResponse({selectedText: window.getSelection().toString()});
+	} else if(request.type == "addNote") {
+		//georgy part
+	}
 });
