@@ -43,7 +43,14 @@ var addNoteItem = {
 	"id": "addNoteItem",
 	"contexts": ["all"],
 	"onclick": function() {
-		noteCreator.displayDialog();
+		var loc = {
+			"pos.beg": "1",
+			"pos.end": "1",
+			"pos.comm": "1",
+			"pos.key":"1",
+			"pos.outKey": "1";
+		}
+		noteCreator.displayDialog('google.com', loc);
 	}
 };
 

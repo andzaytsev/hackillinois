@@ -8,8 +8,10 @@
  * Class for creating a new note 
  */
 var noteCreator = {
-	displayDialog: function() {
-		console.log('clicked AddNote!!!')
-		alert('ok');
+	displayDialog: function(site, pos) {
+		site.insert(pos.beg, pos.end, pos.comm, pos.key, pos.outKey);
+		alert('Added a new comment!')
+		site.storeToChrome();
 	}
 };
+
