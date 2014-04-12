@@ -14,6 +14,7 @@ var test=[
 			}
 		];
 storage.set({"good.html": test});
+
 chrome.extension.onRequest.addListener(
 	function (request, sender, send_response) {
 		storage.get(request.url_request,function(data){
@@ -26,8 +27,11 @@ var highlightItem = {
 	"title": "Highlight",
 	"id": "highlightItem",
 	"contexts": ["all"],
-	"onclick": function() {
-		console.log("highlightItem clicked");
+	"onclick": function(info, tab) {
+		console.log(tab.id);
+		chrome.tabs.sendMessage(tab.id, {}, function(response){
+			console.log(response.selectedText);
+		});
 	}
 };
 

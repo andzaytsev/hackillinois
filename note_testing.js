@@ -21,6 +21,8 @@ var insert_text=function(paragraph) {
 
 
 chrome.extension.sendRequest({url_request : /*document.URL*/"good.html"}, function(response){
+$(document).ready(function(){
+	chrome.extension.sendRequest({url_request : /*document.URL*/"good.html"}, function(response){
 		console.log(response);
 		if (response){
 			console.log(response);
@@ -47,3 +49,24 @@ $(document).ready(function(){
 	});
 });
 
+/*
+var getSelectedText = function()
+{
+	var focused = document.activeElement;
+  	var selectedText;
+  	if (focused) {
+	    try {
+	      	selectedText = focused.value.substring(focused.selectionStart, focused.selectionEnd);
+	    } catch (err) {
+	    }
+ 	}
+	if (selectedText == undefined) {
+		var sel = window.getSelection();
+		var selectedText = sel.toString();
+	}
+	return selectedText;
+}*/
+
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    sendResponse({selectedText: window.getSelection().toString()});
+});
