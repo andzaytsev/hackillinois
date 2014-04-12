@@ -8,7 +8,7 @@ var test=[
 		    	"content": "Alexander has a good youth",
 			}
 		];
-storage.set({"file:///Users/DarwinSenior/Desktop/hackillinois/good.html": test});
+storage.set({"good.html": test});
 chrome.extension.onRequest.addListener(
 	function (request, sender, send_response) {
 		storage.get(request.url_request,function(data){
