@@ -6,9 +6,15 @@
 		    {
 		    	"paragraph_num": 0, //I do not know how to do this
 		    	"text": "During his youth, Alexander was tutored by the philosopher Aristotle until the age of 16.",
+		    	"insertions":[
+		    	{
 		    	"pos_begin": 0,
 		    	"pos_end": 16,
-		    	"content": "Alexander has a good youth",
+		    	"content": "Alexander has a good youth"
+		    },
+		    
+
+		    	]
 			},
 		]
 	},
