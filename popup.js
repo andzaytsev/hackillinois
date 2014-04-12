@@ -77,7 +77,16 @@ var kittenGenerator = {
   }
 };
 
+var formGenerator = {
+  getForm: function () {
+    var input = document.createElement('textarea');
+    input.cols = 40;
+    input.rows = 5;
+    document.body.appendChild(input);
+  }
+};
+
 // Run our kitten generation script as soon as the document's DOM is ready.
 document.addEventListener('DOMContentLoaded', function () {
-  kittenGenerator.requestKittens();
+  formGenerator.getForm();
 });
