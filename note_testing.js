@@ -26,7 +26,7 @@ $(document).ready(function(){
 	chrome.extension.sendRequest({url_request : /*document.URL*/"good.html"}, function(response){
 		console.log(response);
 		if (response){
-			console.log(response.length);
+			console.log(response);
 			for (var i = response.length - 1; i >= 0; i--) {
 				console.log(i+"  ");
 				insert_text(response[i]);

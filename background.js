@@ -46,7 +46,7 @@ var addNoteItem = {
 			"pos.end": "1",
 			"pos.comm": "1",
 			"pos.key":"1",
-			"pos.outKey": "1";
+			"pos.outKey": "1"
 		}
 		noteCreator.displayDialog('google.com', loc);
 	}
