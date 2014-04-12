@@ -1,0 +1,15 @@
+[
+	{
+		"url": "http://en.wikipedia.org/wiki/Alexander_the_Great",
+		"note":
+		[
+		    {
+		    	"paragraph_num": 0, //I do not know how to do this
+		    	"text": "During his youth, Alexander was tutored by the philosopher Aristotle until the age of 16.",
+		    	"pos_begin": 0,
+		    	"pos_end": 16,
+		    	"content": "Alexander has a good youth",
+			},
+		]
+	},
+]
