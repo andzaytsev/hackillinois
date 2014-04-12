@@ -15,7 +15,32 @@ chrome.extension.onRequest.addListener(
 			send_response(data);
 		});
 	}
-	);
-function show_note (note) {
-	// body...
-}
+);
+
+var highlightItem = {
+	"title": "Highlight",
+	"id": "highlightItem",
+	"contexts": ["all"],
+	"onclick": function() {
+		console.log("highlightItem clicked");
+	}
+};
+
+chrome.contextMenus.create(highlightItem, function(obj)
+{
+	console.log("highlightItem has been created");
+});
+
+var addNoteItem = {
+	"title": "Add Note",
+	"id": "addNoteItem",
+	"contexts": ["all"],
+	"onclick": function() {
+		console.log("addNoteItem clicked");
+	}
+};
+
+chrome.contextMenus.create(addNoteItem, function(obj)
+{
+	console.log("addNoteItem has been created");
+});
