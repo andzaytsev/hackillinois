@@ -13,9 +13,9 @@
 * ->outKey		=	the type in the html file... also used as a key
 */
 function node(beg, end, comm, key, outKey) {
-	this.beginning 		= beg;
+	this.beginning 	= beg;
 	this.end 		= end;
-	this.comment 		= comm;
+	this.comment 	= comm;
 	this.key		= key;
 	this.outKey		= outKey;
 }
@@ -27,7 +27,7 @@ function node(beg, end, comm, key, outKey) {
  * array - array that holds paragraph objects 
  */
 function Site(url){
-	this.url 			= url; 
+	this.url 		= url; 
 	this.length		=  0;
 	this.nodes 		= new Array();
 }
@@ -71,18 +71,18 @@ Site.prototype.getFromChrome= function() {
   * testing
   */
 
-function aplay() {
-	var test1 = "beg";
-	var test2 = "end";
-	var test3 = "comm";
-	var test4 = "key"; 
-	var test5 = "outKey"; 
-	var site1 = new Site("google.com");
-	site1.insert(test1, test2, test3, test4, test5);
-	alert(site1.nodes[0].beginning);
-	site1.storeToChrome();
-	alert("ehehehehehe");
-	//site1.getFromChrome();
+// function aplay() {
+// 	var test1 = "beg";
+// 	var test2 = "end";
+// 	var test3 = "comm";
+// 	var test4 = "key"; 
+// 	var test5 = "outKey"; 
+// 	var site1 = new Site("google.com");
+// 	site1.insert(test1, test2, test3, test4, test5);
+// 	alert(site1.nodes[0].beginning);
+// 	site1.storeToChrome();
+// 	alert("ehehehehehe");
+// 	//site1.getFromChrome();
 
-	alert(site1.nodes[0].beginning);
-}
+// 	alert(site1.nodes[0].beginning);
+// }

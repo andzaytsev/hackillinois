@@ -50,6 +50,7 @@ var highlightItem = {
 		chrome.tabs.sendMessage(tab.id, {type: "highlight"}, function(response){
 			console.log(response.selectedText);
 		});
+
 	}
 };
 
@@ -70,7 +71,15 @@ var addNoteItem = {
 			"pos.key":"1",
 			"pos.outKey": "1"
 		}
-		noteCreator.displayDialog('google.com', loc);
+		//noteCreator.displayDialog('google.com', loc);
+		chrome.windows.create({url:"popup.html", "type": "popup", height: 50, width:200,}, function(){}/*function(window){
+			chrome.runtime.onMessage.addListener(function(request, sender, send_response){
+				if (request.comment){
+					console.log("exist");
+					chrome.tabs.remove(window.id);
+				}
+			});*/
+		);
 	}
 };
 
