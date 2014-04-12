@@ -19,7 +19,11 @@ chrome.extension.onRequest.addListener(
 
 var highlightItem = {
 	"title": "Highlight",
-	"id": "highlightItem"
+	"id": "highlightItem",
+	"contexts": ["all"],
+	"onclick": function() {
+		console.log("highlightItem clicked");
+	}
 };
 
 chrome.contextMenus.create(highlightItem, function(obj)
@@ -29,7 +33,11 @@ chrome.contextMenus.create(highlightItem, function(obj)
 
 var addNoteItem = {
 	"title": "Add Note",
-	"id": "addNoteItem"
+	"id": "addNoteItem",
+	"contexts": ["all"],
+	"onclick": function() {
+		console.log("addNoteItem clicked");
+	}
 };
 
 chrome.contextMenus.create(addNoteItem, function(obj)
