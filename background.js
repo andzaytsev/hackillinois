@@ -16,3 +16,6 @@ chrome.extension.onRequest.addListener(
 		});
 	}
 	);
+function show_note (note) {
+	// body...
+}
