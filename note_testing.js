@@ -22,3 +22,25 @@ $(document).ready(function(){
 		$("#"+hide_id).hide(); 
 	})
 });
+
+/*
+var getSelectedText = function()
+{
+	var focused = document.activeElement;
+  	var selectedText;
+  	if (focused) {
+	    try {
+	      	selectedText = focused.value.substring(focused.selectionStart, focused.selectionEnd);
+	    } catch (err) {
+	    }
+ 	}
+	if (selectedText == undefined) {
+		var sel = window.getSelection();
+		var selectedText = sel.toString();
+	}
+	return selectedText;
+}*/
+
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    sendResponse({selectedText: window.getSelection().toString()});
+});
