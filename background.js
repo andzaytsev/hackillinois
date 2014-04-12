@@ -3,9 +3,16 @@ var test=[
 		    {
 		    	"paragraph_num": 0, //I do not know how to do this
 		    	"text": "During his youth, Alexander was tutored by the philosopher Aristotle until the age of 16.",
+		    	"element": '<p>
+		During his youth, Alexander was tutored by the philosopher Aristotle until the age of 16. <!--<a class="note_show" id="note1_show" style="display: inline;">show note</a><span class="note_container" id="note1_hide" style="display: none;">*****<a class="note_hide" id="note1">==(hide note)===</a></span>-->When he succeeded his father to the throne in 336 BC, after Philip was assassinated, Alexander inherited a strong kingdom and an experienced army. He had been awarded the generalship of Greece and used this authority to launch his father\'s military expansion plans. In 334 BC, he invaded the Achaemenid empire, ruled Asia Minor, and began a series of campaigns that lasted ten years. Alexander broke the power of Persia in a series of decisive battles, most notably the battles of Issus and Gaugamela. He subsequently overthrew the Persian King Darius III and conquered the entirety of the Persian Empire.i[›] At that point, his empire stretched from the Adriatic Sea to the Indus River.
+	</p>',
+	            "insertions":[
+	            {
 		    	"pos_begin": 0,
 		    	"pos_end": 16,
 		    	"content": "Alexander has a good youth",
+	            }
+	            ]
 			}
 		];
 storage.set({"good.html": test});
