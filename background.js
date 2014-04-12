@@ -15,4 +15,24 @@ chrome.extension.onRequest.addListener(
 			send_response(data);
 		});
 	}
-	);
+);
+
+var highlightItem = {
+	"title": "Highlight",
+	"id": "highlightItem"
+};
+
+chrome.contextMenus.create(highlightItem, function(obj)
+{
+	console.log("highlightItem has been created");
+});
+
+var addNoteItem = {
+	"title": "Add Note",
+	"id": "addNoteItem"
+};
+
+chrome.contextMenus.create(addNoteItem, function(obj)
+{
+	console.log("addNoteItem has been created");
+});
