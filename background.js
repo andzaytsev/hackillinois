@@ -63,7 +63,7 @@ var addNoteItem = {
 	"title": "Add Note",
 	"id": "addNoteItem",
 	"contexts": ["all"],
-	"onclick": function() {
+	"onclick": function(info, tab) {
 		var loc = {
 			"pos.beg": "1",
 			"pos.end": "1",
@@ -72,14 +72,19 @@ var addNoteItem = {
 			"pos.outKey": "1"
 		}
 		//noteCreator.displayDialog('google.com', loc);
-		chrome.windows.create({url:"popup.html", "type": "popup", height: 50, width:200,}, function(){}/*function(window){
+		chrome.windows.create({url:"popup.html", "type": "popup", height: 50, width:200}, function(window){
 			chrome.runtime.onMessage.addListener(function(request, sender, send_response){
 				if (request.comment){
-					console.log("exist");
-					chrome.tabs.remove(window.id);
+					//console.log("in the background js file: " + request.comment);
+					//console.log("the submit button was clicked");
+					//console.log("window.id " + window.id);
+					chrome.windows.remove(window.id);
+					//console.log(tab.url);
+
+					//storage.set({tab.url: });
 				}
-			});*/
-		);
+			});
+		});
 	}
 };
 
