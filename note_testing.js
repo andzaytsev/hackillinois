@@ -68,5 +68,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     	sendResponse({selectedText: window.getSelection().toString()});
 	} else if(request.type == "addNote") {
 		//georgy part
+		console.log("adding note");
+		sendResponse({data:"data from adding note listener"});
 	}
 });

@@ -8,18 +8,18 @@
  *
  * @type {string}
  */
-
+/*
 var formGenerator = {
   getForm: function() {
     var input = document.createElement('textarea');
     input.cols = 40;
     input.rows = 5;
     document.body.appendChild(input);
-  }
+  },
   getButton: function(){
     var input = document.createElement('button');
   }
-};
+};*/
 
 // Run our kitten generation script as soon as the document's DOM is ready.
 // document.addEventListener('DOMContentLoaded', function () {
@@ -29,6 +29,8 @@ var formGenerator = {
 
 $(document).ready(function(){
   $("#submit").click(function(event){
+    console.log("submit clicked");
+    console.log($("#comment").val());
     chrome.runtime.sendMessage({"comment":$("#comment").val()});
   });
 });
