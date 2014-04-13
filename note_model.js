@@ -2,8 +2,7 @@ Array.prototype.insert = function (index, item) {
   this.splice(index, 0, item);
 };
 
-var insert= function(url, paragraph_text, pos_begin, pos_end, content, storage) {
-	chrome.storage.local.get(url, function(data){
+var insert= function(url, paragraph_text, pos_begin, pos_end, content, data) {
 		if(!data){
 			data=[
 			   {"paragraph_text": paragraph_text, 
@@ -29,15 +28,13 @@ var insert= function(url, paragraph_text, pos_begin, pos_end, content, storage) 
 				}
 			}
 			if (!find){
-				data.insert(data.length,{"paragraph_num": paragraph_num, "insertions":[{"pos_begin": pos_begin, "pos_end": pos_end, "content": content}]});
+				data.insert(data.length,{"paragraph_text": paragraph_text, "insertions":[{"pos_begin": pos_begin, "pos_end": pos_end, "content": content}]});
 			}
 		}
 		console.log("data");
 		console.log(data);
-		chrome.storage.local.set(url, data);
-	});
 }
-
+/*
 var find_paragraph= function(tab, text){
 	var result = {};
 	chrome.tabs.executeScript(null, { file: "jquery-1.11.0.min.js" }, function(){
@@ -46,4 +43,4 @@ var find_paragraph= function(tab, text){
 		result.pos_end = result[pos_begin]+ text.length;
 	});
 	return result;
-}
+}*/
