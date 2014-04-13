@@ -78,7 +78,21 @@ var addNoteItem = {
 					//console.log("in the background js file: " + request.comment);
 					//console.log("the submit button was clicked");
 					//console.log("window.id " + window.id);
-					chrome.windows.remove(window.id);
+
+					//pos-begin, pos-end, paragraph
+					chrome.tabs.sendMessage(tab.id, {type: "addNote"}, function(response){
+						var selection = response;
+						console.log("response received");
+						//console.log(selection);
+						
+						//selection.comment = request.comment;
+						//selText: selectedStr,
+						//parentEl: outerHTML,
+						//begin: outerHTML.indexOf(selectedStr),
+
+						console.log(selection);
+					});
+					//chrome.windows.remove(window.id);
 					//console.log(tab.url);
 
 					//storage.set({tab.url: });

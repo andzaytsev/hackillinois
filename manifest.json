@@ -22,7 +22,7 @@
   "content_scripts" : [
   {
     "matches" : ["<all_urls>"],
-    "js" : ["jquery-1.11.0.min.js", "jquery-ui-1.10.4.min.js", "note_testing.js"],
+    "js" : ["jquery-1.11.0.min.js", "note_testing.js"],
     "css" : ["note.css"]
   }
   ]
