@@ -65,13 +65,23 @@ var getSelectedText = function()
 
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+	//This is the first position of the element
+	var selectedTextFirstInst  = window.getSelection().getRangeAt(0);
+
+	//This does the highlight
 	if(request.type == "highlight") {
- 	   	sendResponse({selectedText : window.getSelection().toString()});
-		//alert("ehhe");
-		//var focused = document.activeElement;	
-		//iivar selectedText = focused.value.substring(focused.selectionStart, focused.selectionEnd);
-		//alert(selectedText);
-		selectedText.effect("highlight", {color: 'yellow'}, 3000);
+
+		//Create new element to edit
+		var newNode = document.createElement("div");
+
+		//Set the attribute to this element
+		newNode.setAttribute(
+		   "style",
+		   "background-color: orange; display: inline;"
+		);
+
+		//Set these parameters
+		selectedTextFirstInst.surroundContents(newNode);	
 
 	} else if(request.type == "addNote") {
 		//georgy part
