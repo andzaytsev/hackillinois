@@ -137,7 +137,7 @@ var addNoteItem = {
 						console.log(response.parentEl);
 						var parentEl = response.parentEl;
 						var data = localStorage[tab.url]?jQuery.parseJSON(localStorage[tab.url]):undefined;
-						var position_end = parentEl.length+response.begin;
+						var position_end = response.selText.length+response.begin;
 						var position_begin = response.begin;
 						var paragraph_num = response.paragraph_num+1;
 						var new_obj = {"pos_begin": position_begin, "pos_end": position_end, "parentEl": parentEl, "comment":request.comment, "paragraph_num": paragraph_num};

@@ -16,6 +16,7 @@ var insert_text=function(paragraph) {
 	};
 }
 var insert_text2=function(obj, index) {
+	console.log(obj);
 	var html_m = $("p:nth-child("+obj.paragraph_num+")").prop('outerHTML');
 	var note = '<a class="note_show" id="note'+
 		index+'_show" style="display: inline;">show note</a><span class="note_container" id="note'+
@@ -23,8 +24,7 @@ var insert_text2=function(obj, index) {
 		obj.comment+'<a class="note_hide" id="note'+
 		index+'">(hide note)</a></span>';
 
-	html_m = html_m.substr(0,obj.pos_end)+"[{{{{"+obj.commment+"}}}}]"+html_m.substr(obj.pos_end);
-	console.log(html_m);
+	html_m = html_m.substr(0,obj.pos_begin)+note+html_m.substr(obj.pos_begin);
 	$(html_m).insertAfter("p:nth-child("+obj.paragraph_num+")");
 	$("p:nth-child("+obj.paragraph_num+")").remove();
 }
@@ -36,7 +36,7 @@ chrome.extension.sendRequest({url_request : document.URL}, function(response){
 		console.log(response);
 		var elements_pos={};
 		for (var i = response.length - 1; i >= 0; i--) {
-			insert_text2(response[i],i);
+			insert_text2(response[i],i+1);
 		}
 	}
 });
