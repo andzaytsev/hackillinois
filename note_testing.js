@@ -86,6 +86,18 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	} else if(request.type == "addNote") {
 		//georgy part
 		console.log("adding note");
-		sendResponse({data:"data from adding note listener"});
+		var selectionObj = window.getSelection(); 
+		var selectedStr = window.getSelection().toString();
+		//console.log("achor node parent element: " + $(selectionObj.anchorNode.parentElement)[0].outerHTML);
+		//console.log("achor offset: " + selectionObj.anchorOffset);
+		var outerHTML = $(selectionObj.anchorNode.parentElement)[0].outerHTML;
+		//var paragraph_num = $("p:contains('" + selectedStr + "')");
+		//console.log(paragraph_num);
+		var selectedObj = {
+			selText: selectedStr,
+			parentEl: outerHTML,
+			begin: outerHTML.indexOf(selectedStr),
+		};
+		sendResponse(selectedObj);
 	}
 });
