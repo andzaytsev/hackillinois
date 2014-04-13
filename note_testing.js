@@ -15,15 +15,28 @@ var insert_text=function(paragraph) {
 		//console.log(html_m);
 	};
 }
+var insert_text2=function(obj, index) {
+	var html_m = $("p:nth-child("+obj.paragraph_num+")").prop('outerHTML');
+	var note = '<a class="note_show" id="note'+
+		index+'_show" style="display: inline;">show note</a><span class="note_container" id="note'+
+		index+'_hide" style="display: none;">'+
+		obj.comment+'<a class="note_hide" id="note'+
+		index+'">(hide note)</a></span>';
+
+	html_m = html_m.substr(0,obj.pos_end)+"[{{{{"+obj.commment+"}}}}]"+html_m.substr(obj.pos_end);
+	console.log(html_m);
+	$(html_m).insertAfter("p:nth-child("+obj.paragraph_num+")");
+	$("p:nth-child("+obj.paragraph_num+")").remove();
+}
 
 
-chrome.extension.sendRequest({url_request : /*document.URL*/"good.html"}, function(response){
+chrome.extension.sendRequest({url_request : document.URL}, function(response){
 	console.log(response);
 	if (response){
 		console.log(response);
+		var elements_pos={};
 		for (var i = response.length - 1; i >= 0; i--) {
-			console.log(i+"  ");
-			insert_text(response[i]);
+			insert_text2(response[i],i);
 		}
 	}
 });
@@ -91,12 +104,13 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 		//console.log("achor node parent element: " + $(selectionObj.anchorNode.parentElement)[0].outerHTML);
 		//console.log("achor offset: " + selectionObj.anchorOffset);
 		var outerHTML = $(selectionObj.anchorNode.parentElement)[0].outerHTML;
-		//var paragraph_num = $("p:contains('" + selectedStr + "')");
-		//console.log(paragraph_num);
+		var paragraph_num = $("p").index(selectionObj.anchorNode.parentElement);
+		console.log(paragraph_num);
 		var selectedObj = {
 			selText: selectedStr,
 			parentEl: outerHTML,
 			begin: outerHTML.indexOf(selectedStr),
+			paragraph_num: paragraph_num
 		};
 		sendResponse(selectedObj);
 	}

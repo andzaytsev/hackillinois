@@ -17,7 +17,7 @@
     "default_popup": "popup.html"
   },
   "background" : {
-    "scripts" : ["background.js", "note_create.js", "defn.js", "note_model.js"]
+    "scripts" : ["background.js", "note_create.js", "jquery-1.11.0.min.js"]
   },
   "content_scripts" : [
   {

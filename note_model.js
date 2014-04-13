@@ -3,6 +3,7 @@ Array.prototype.insert = function (index, item) {
 };
 
 var insert= function(url, paragraph_text, pos_begin, pos_end, content, data) {
+	console.log(data);
 		if(!data){
 			data=[
 			   {"paragraph_text": paragraph_text, 
@@ -23,16 +24,17 @@ var insert= function(url, paragraph_text, pos_begin, pos_end, content, data) {
 						}
 					}
 					if (!inserted){
-						data.insertions[i].insert(data.insertion[i].length,{"pos_begin":pos_begin, "pos_end":pos_end, "content": content});
+						data[i].insertions.insert(data.insertion[i].length,{"pos_begin":pos_begin, "pos_end":pos_end, "content": content});
 					}
 				}
 			}
 			if (!find){
-				data.insert(data.length,{"paragraph_text": paragraph_text, "insertions":[{"pos_begin": pos_begin, "pos_end": pos_end, "content": content}]});
+				data.push({"paragraph_text": paragraph_text, "insertions":[{"pos_begin": pos_begin, "pos_end": pos_end, "content": content}]});
 			}
 		}
 		console.log("data");
 		console.log(data);
+		return data;
 }
 /*
 var find_paragraph= function(tab, text){
