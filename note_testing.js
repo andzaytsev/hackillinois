@@ -60,12 +60,19 @@ var getSelectedText = function()
 		var selectedText = sel.toString();
 	}
 	return selectedText;
-}*/
+}
+*/
+
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	if(request.type == "highlight") {
-		//artyom part
-    	sendResponse({selectedText: window.getSelection().toString()});
+ 	   	sendResponse({selectedText : window.getSelection().toString()});
+		//alert("ehhe");
+		//var focused = document.activeElement;	
+		//iivar selectedText = focused.value.substring(focused.selectionStart, focused.selectionEnd);
+		//alert(selectedText);
+		selectedText.effect("highlight", {color: 'yellow'}, 3000);
+
 	} else if(request.type == "addNote") {
 		//georgy part
 	}
